@@ -38,13 +38,7 @@ Some knowledge of how [Azure ARM templates][azure-arm] work is really helpful. A
 - Open the solution file in Visual Studio and deploy from Visual Studio.
 
 ## Method 2 - From [Azure Deploy][azure-deploy]
-- Create a storage account (you can also use an existing one) for ARM to upload this template. (_artifactsLocation)
-- Create a Shared access signature (SAS Token) for that storage account with full permissions. (_artifactsLocationSasToken)
-- Hit the [Deploy to Azure][azure-deploy-awg] button at the top. 
-- Fill the necessary parameters along with _artifactsLocation and _artifactsLocationSasToken from above and hit the Purchase button.
-
-[<img src="http://dcai.github.io/img/posts/azurewireguard-sas.png" alt="Azure Wire Guard SAS" width="200"/>](http://dcai.github.io/img/posts/azurewireguard-sas.png)
-[<img src="http://dcai.github.io/img/posts/azurewireguard-portal.png" alt="Azure Wire Deploy" width="200"/>](http://dcai.github.io/img/posts/azurewireguard-portal.png)
+- Hit the [Deploy to Azure][azure-deploy-awg] button at the top.
 
 ## Other Methods
 - There are multiple ways to deploy an Azure ARM template like  [Powershell][azure-ps], [Azure CLI][azure-cli], [Azure Portal][azure-portal] and [REST API][azure-rest].
@@ -53,12 +47,12 @@ Some knowledge of how [Azure ARM templates][azure-arm] work is really helpful. A
 - The client configuration files are named wg0-client-1.conf, wg0-client-2.conf, ..., wg0-client-9.conf and wg0-client-10.conf.
 - They are located in the administrator users home folder (~/).
 - You can use tools like scp and pscp to download the client configuration files directly from the server.
-    
+
     scp &lt;admin-user&gt;@&lt;server-fqdn&gt;:/home/&lt;admin-user&gt;/wg0-client-1.conf /local/dir/
-    
+
     pscp &lt;admin-user&gt;@&lt;server-fqdn&gt;:/home/&lt;admin-user&gt;/wg0-client-1.conf c:\local\
 
-    Example: 
+    Example:
 
 	scp vmadmin@awgyj5lzwixbj3ng.westus.cloudapp.azure.com:/home/vmadmin/wg0-client* /local/dir/
 
