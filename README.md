@@ -1,7 +1,7 @@
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fvijayshinva%2FAzureWireGuard%2Fmaster%2FAzureWireGuard%2FLinuxVirtualMachine.json" target="_blank">
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fdcai%2FAzureWireGuard%2Fmaster%2FAzureWireGuard%2FLinuxVirtualMachine.json" target="_blank">
     <img src="http://azuredeploy.net/deploybutton.png"/>
 </a>
-<a href="http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2Fvijayshinva%2FAzureWireGuard%2Fmaster%2FAzureWireGuard%2FLinuxVirtualMachine.json" target="_blank">
+<a href="http://armviz.io/#/?load=https%3A%2F%2Fraw.githubusercontent.com%2Fdcai%2FAzureWireGuard%2Fmaster%2FAzureWireGuard%2FLinuxVirtualMachine.json" target="_blank">
     <img src="http://armviz.io/visualizebutton.png"/>
 </a>
 
@@ -43,8 +43,8 @@ Some knowledge of how [Azure ARM templates][azure-arm] work is really helpful. A
 - Hit the [Deploy to Azure][azure-deploy-awg] button at the top. 
 - Fill the necessary parameters along with _artifactsLocation and _artifactsLocationSasToken from above and hit the Purchase button.
 
-[<img src="http://vijayshinva.github.io/img/posts/azurewireguard-sas.png" alt="Azure Wire Guard SAS" width="200"/>](http://vijayshinva.github.io/img/posts/azurewireguard-sas.png)
-[<img src="http://vijayshinva.github.io/img/posts/azurewireguard-portal.png" alt="Azure Wire Deploy" width="200"/>](http://vijayshinva.github.io/img/posts/azurewireguard-portal.png)
+[<img src="http://dcai.github.io/img/posts/azurewireguard-sas.png" alt="Azure Wire Guard SAS" width="200"/>](http://dcai.github.io/img/posts/azurewireguard-sas.png)
+[<img src="http://dcai.github.io/img/posts/azurewireguard-portal.png" alt="Azure Wire Deploy" width="200"/>](http://dcai.github.io/img/posts/azurewireguard-portal.png)
 
 ## Other Methods
 - There are multiple ways to deploy an Azure ARM template like  [Powershell][azure-ps], [Azure CLI][azure-cli], [Azure Portal][azure-portal] and [REST API][azure-rest].
@@ -86,13 +86,13 @@ NOTE: Be sure to pull the latest from "upstream" before making a pull request!
 [ubuntu]: https://www.ubuntu.com/server
 [azure-portal]: https://portal.azure.com
 [vs]: https://visualstudio.microsoft.com/vs/community/
-[git-repo]: https://github.com/vijayshinva/AzureWireGuard
+[git-repo]: https://github.com/dcai/AzureWireGuard
 [azure-ps]: https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-deploy
 [azure-cli]: https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-deploy-cli
 [azure-rest]: https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-deploy-rest
 [azure-deploy]: azuredeploy.net
 [azure-portal]: https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-deploy-portal
-[azure-deploy-awg]: https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fvijayshinva%2FAzureWireGuard%2Fmaster%2FAzureWireGuard%2FLinuxVirtualMachine.json
+[azure-deploy-awg]: https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fdcai%2FAzureWireGuard%2Fmaster%2FAzureWireGuard%2FLinuxVirtualMachine.json
 [azure-rg]: https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview#resource-groups
 [ufw]: https://help.ubuntu.com/community/UFW
 [azure-accelerated-nw]: https://docs.microsoft.com/en-us/azure/virtual-network/create-vm-accelerated-networking-cli
