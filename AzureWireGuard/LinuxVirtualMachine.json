@@ -33,7 +33,7 @@
     "imagePublisher": "Canonical",
     "imageOffer": "UbuntuServer",
     "ubuntuOSVersion": "18.04-LTS",
-    "resourceName": "[concat('a', uniqueString(subscription().subscriptionId, resourceGroup().id)]",
+    "resourceName": "[concat('aaa', uniqueString(subscription().subscriptionId, resourceGroup().id))]",
     "addressPrefix": "10.0.0.0/16",
     "subnetPrefix": "10.0.0.0/24",
     "diagnosticsStorageType": "Standard_LRS",
