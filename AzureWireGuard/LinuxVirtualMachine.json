@@ -16,17 +16,13 @@
         "description": "Password for the Virtual Machine."
       }
     },
-    "_artifactsLocation": {
+    "scriptUrl": {
       "type": "string",
       "metadata": {
-        "description": "Auto-generated container in staging storage account to receive post-build staging folder upload"
-      }
-    },
-    "_artifactsLocationSasToken": {
-      "type": "securestring",
-      "metadata": {
-        "description": "Auto-generated token to access _artifactsLocation"
-      }
+        "artifactsBaseUrl": "",
+        "description": "Choose where the AzureWireGuard.sh install script can be found"
+      },
+      "defaultValue": "https://github.com/dcai/AzureWireGuard/blob/master/AzureWireGuard/CustomScripts/AzureWireGuard.sh"
     }
   },
   "variables": {
@@ -234,7 +230,7 @@
             "settings": {
               "skipDos2Unix": false,
               "fileUris": [
-                "[concat(parameters('_artifactsLocation'), '/', variables('AzureWireGuardScriptFolder'), '/', variables('AzureWireGuardScriptFileName'), parameters('_artifactsLocationSasToken'))]"
+                "[parameters('scriptUrl')]"
               ],
               "commandToExecute": "[concat('bash ', variables('AzureWireGuardScriptFileName'), ' ', reference(resourceId('Microsoft.Network/publicIPAddresses', variables('resourceName'))).dnsSettings.fqdn, ' ', parameters('adminUsername'))]"
             }
