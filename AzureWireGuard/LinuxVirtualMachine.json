@@ -22,7 +22,7 @@
         "artifactsBaseUrl": "",
         "description": "Choose where the AzureWireGuard.sh install script can be found"
       },
-      "defaultValue": "https://github.com/dcai/AzureWireGuard/blob/master/AzureWireGuard/CustomScripts/AzureWireGuard.sh"
+      "defaultValue": "https://raw.githubusercontent.com/dcai/AzureWireGuard/master/AzureWireGuard/CustomScripts/AzureWireGuard.sh"
     }
   },
   "variables": {
@@ -212,7 +212,7 @@
       },
       "resources": [
         {
-          "name": "AzureWireGuard",
+          "name": "AzureWireGuardExecuteBashScript",
           "type": "extensions",
           "location": "[resourceGroup().location]",
           "apiVersion": "2016-03-30",
