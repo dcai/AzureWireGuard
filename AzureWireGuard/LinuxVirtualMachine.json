@@ -228,7 +228,7 @@
             "typeHandlerVersion": "2.0",
             "autoUpgradeMinorVersion": true,
             "settings": {
-              "skipDos2Unix": false,
+              "skipDos2Unix": true,
               "fileUris": [
                 "[parameters('scriptUrl')]"
               ],

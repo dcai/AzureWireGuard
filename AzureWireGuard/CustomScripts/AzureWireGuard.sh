@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ## unattended-upgrade
-apt-get update -y 
+apt-get update -y
 unattended-upgrades --verbose
 
 ## IP Forwarding
@@ -10,8 +10,8 @@ sed -i -e 's/#net.ipv6.conf.all.forwarding.*/net.ipv6.conf.all.forwarding=1/g' /
 sysctl -p
 
 ## Install WireGurard
-add-apt-repository ppa:wireguard/wireguard -y 
-apt-get update -y 
+add-apt-repository ppa:wireguard/wireguard -y
+apt-get update -y
 apt-get install linux-headers-$(uname -r) -y
 apt-get install wireguard -y
 
@@ -20,18 +20,18 @@ apt-get install wireguard -y
 # Generate security keys
 mkdir /home/$2/WireGuardSecurityKeys
 umask 077
-wg genkey | tee /home/$2/WireGuardSecurityKeys/server_private_key | wg pubkey > /home/$2/WireGuardSecurityKeys/server_public_key
-wg genpsk > /home/$2/WireGuardSecurityKeys/preshared_key
-wg genkey | tee /home/$2/WireGuardSecurityKeys/client_one_private_key | wg pubkey > /home/$2/WireGuardSecurityKeys/client_one_public_key
-wg genkey | tee /home/$2/WireGuardSecurityKeys/client_two_private_key | wg pubkey > /home/$2/WireGuardSecurityKeys/client_two_public_key
-wg genkey | tee /home/$2/WireGuardSecurityKeys/client_three_private_key | wg pubkey > /home/$2/WireGuardSecurityKeys/client_three_public_key
-wg genkey | tee /home/$2/WireGuardSecurityKeys/client_four_private_key | wg pubkey > /home/$2/WireGuardSecurityKeys/client_four_public_key
-wg genkey | tee /home/$2/WireGuardSecurityKeys/client_five_private_key | wg pubkey > /home/$2/WireGuardSecurityKeys/client_five_public_key
-wg genkey | tee /home/$2/WireGuardSecurityKeys/client_six_private_key | wg pubkey > /home/$2/WireGuardSecurityKeys/client_six_public_key
-wg genkey | tee /home/$2/WireGuardSecurityKeys/client_seven_private_key | wg pubkey > /home/$2/WireGuardSecurityKeys/client_seven_public_key
-wg genkey | tee /home/$2/WireGuardSecurityKeys/client_eight_private_key | wg pubkey > /home/$2/WireGuardSecurityKeys/client_eight_public_key
-wg genkey | tee /home/$2/WireGuardSecurityKeys/client_nine_private_key | wg pubkey > /home/$2/WireGuardSecurityKeys/client_nine_public_key
-wg genkey | tee /home/$2/WireGuardSecurityKeys/client_ten_private_key | wg pubkey > /home/$2/WireGuardSecurityKeys/client_ten_public_key
+wg genkey | tee /home/$2/WireGuardSecurityKeys/server_private_key | wg pubkey >/home/$2/WireGuardSecurityKeys/server_public_key
+wg genpsk >/home/$2/WireGuardSecurityKeys/preshared_key
+wg genkey | tee /home/$2/WireGuardSecurityKeys/client_one_private_key | wg pubkey >/home/$2/WireGuardSecurityKeys/client_one_public_key
+wg genkey | tee /home/$2/WireGuardSecurityKeys/client_two_private_key | wg pubkey >/home/$2/WireGuardSecurityKeys/client_two_public_key
+wg genkey | tee /home/$2/WireGuardSecurityKeys/client_three_private_key | wg pubkey >/home/$2/WireGuardSecurityKeys/client_three_public_key
+wg genkey | tee /home/$2/WireGuardSecurityKeys/client_four_private_key | wg pubkey >/home/$2/WireGuardSecurityKeys/client_four_public_key
+wg genkey | tee /home/$2/WireGuardSecurityKeys/client_five_private_key | wg pubkey >/home/$2/WireGuardSecurityKeys/client_five_public_key
+wg genkey | tee /home/$2/WireGuardSecurityKeys/client_six_private_key | wg pubkey >/home/$2/WireGuardSecurityKeys/client_six_public_key
+wg genkey | tee /home/$2/WireGuardSecurityKeys/client_seven_private_key | wg pubkey >/home/$2/WireGuardSecurityKeys/client_seven_public_key
+wg genkey | tee /home/$2/WireGuardSecurityKeys/client_eight_private_key | wg pubkey >/home/$2/WireGuardSecurityKeys/client_eight_public_key
+wg genkey | tee /home/$2/WireGuardSecurityKeys/client_nine_private_key | wg pubkey >/home/$2/WireGuardSecurityKeys/client_nine_public_key
+wg genkey | tee /home/$2/WireGuardSecurityKeys/client_ten_private_key | wg pubkey >/home/$2/WireGuardSecurityKeys/client_ten_public_key
 
 # Generate configuration files
 server_private_key=$(</home/$2/WireGuardSecurityKeys/server_private_key)
@@ -59,7 +59,7 @@ client_ten_private_key=$(</home/$2/WireGuardSecurityKeys/client_ten_private_key)
 client_ten_public_key=$(</home/$2/WireGuardSecurityKeys/client_ten_public_key)
 
 # Server Config
-cat > /etc/wireguard/wg0.conf << EOF
+cat >/etc/wireguard/wg0.conf <<EOF
 [Interface]
 Address = 10.13.13.1/24
 SaveConfig = true
@@ -120,7 +120,7 @@ AllowedIps = 10.13.13.110/32
 EOF
 
 # Client Configs
-cat > /home/$2/wg0-client-1.conf << EOF
+cat >/home/$2/wg0-client-1.conf <<EOF
 [Interface]
 PrivateKey = $client_one_private_key
 Address = 10.13.13.101/32
@@ -137,7 +137,7 @@ EOF
 
 chmod go+r /home/$2/wg0-client-1.conf
 
-cat > /home/$2/wg0-client-2.conf << EOF
+cat >/home/$2/wg0-client-2.conf <<EOF
 [Interface]
 PrivateKey = $client_two_private_key
 Address = 10.13.13.102/32
@@ -154,7 +154,7 @@ EOF
 
 chmod go+r /home/$2/wg0-client-2.conf
 
-cat > /home/$2/wg0-client-3.conf << EOF
+cat >/home/$2/wg0-client-3.conf <<EOF
 [Interface]
 PrivateKey = $client_three_private_key
 Address = 10.13.13.103/32
@@ -171,7 +171,7 @@ EOF
 
 chmod go+r /home/$2/wg0-client-3.conf
 
-cat > /home/$2/wg0-client-4.conf << EOF
+cat >/home/$2/wg0-client-4.conf <<EOF
 [Interface]
 PrivateKey = $client_four_private_key
 Address = 10.13.13.104/32
@@ -188,7 +188,7 @@ EOF
 
 chmod go+r /home/$2/wg0-client-4.conf
 
-cat > /home/$2/wg0-client-5.conf << EOF
+cat >/home/$2/wg0-client-5.conf <<EOF
 [Interface]
 PrivateKey = $client_five_private_key
 Address = 10.13.13.105/32
@@ -205,7 +205,7 @@ EOF
 
 chmod go+r /home/$2/wg0-client-5.conf
 
-cat > /home/$2/wg0-client-6.conf << EOF
+cat >/home/$2/wg0-client-6.conf <<EOF
 [Interface]
 PrivateKey = $client_six_private_key
 Address = 10.13.13.106/32
@@ -222,7 +222,7 @@ EOF
 
 chmod go+r /home/$2/wg0-client-6.conf
 
-cat > /home/$2/wg0-client-7.conf << EOF
+cat >/home/$2/wg0-client-7.conf <<EOF
 [Interface]
 PrivateKey = $client_seven_private_key
 Address = 10.13.13.107/32
@@ -239,7 +239,7 @@ EOF
 
 chmod go+r /home/$2/wg0-client-7.conf
 
-cat > /home/$2/wg0-client-8.conf << EOF
+cat >/home/$2/wg0-client-8.conf <<EOF
 [Interface]
 PrivateKey = $client_eight_private_key
 Address = 10.13.13.108/32
@@ -256,7 +256,7 @@ EOF
 
 chmod go+r /home/$2/wg0-client-8.conf
 
-cat > /home/$2/wg0-client-9.conf << EOF
+cat >/home/$2/wg0-client-9.conf <<EOF
 [Interface]
 PrivateKey = $client_nine_private_key
 Address = 10.13.13.109/32
@@ -273,7 +273,7 @@ EOF
 
 chmod go+r /home/$2/wg0-client-9.conf
 
-cat > /home/$2/wg0-client-10.conf << EOF
+cat >/home/$2/wg0-client-10.conf <<EOF
 [Interface]
 PrivateKey = $client_ten_private_key
 Address = 10.13.13.110/32
@@ -290,7 +290,7 @@ EOF
 
 chmod go+r /home/$2/wg0-client-10.conf
 
-## Firewall 
+## Firewall
 ufw allow 51820/udp
 ufw allow 22/tcp
 ufw enable
@@ -302,5 +302,5 @@ systemctl enable wg-quick@wg0
 ## Upgrade
 apt-get full-upgrade -y
 
-## Shutdown 
+## Shutdown
 shutdown -r 1440
